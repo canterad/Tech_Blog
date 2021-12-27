@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <title>The Tech Blog</title>
+  </head>
+
+  <body>
+  
+    <!-- This is the Header Section that displays the Navigation Bar and Title. -->
+    <header>
+        <!-- Navagation section.  -->
+        <nav>
+            <!-- Unordered List element, contains link items. -->
+            <ul>
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/dashboard">Dashboard</a>
+                </li>
+
+                <!-- if logged in then display logout link. -->
+                {{#if loggedIn}}
+                    <li>
+                        <a href="/home">Logout</a>
+                    </li>    
+                {{else}}
+                <!-- Otherwise, show a link to login -->
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>    
+                {{/if}}
+            </ul>            
+        </nav>
+        
+        <div id="title_tag">
+          <h1>The Tech Blog</h1> 
+        </div>  
+                     
+    </header>
+
+    <main>
+        {{{ body }}} 
+    </main>
+
+    <!-- If the user is logged in, load the JS script for when they logout -->
+    {{#if loggedIn}} 
+      <script src="../public/js/logout.js"></script>
+    {{/if}} 
+
+    <!-- <script src="assets/js/script.js"></script>  -->
+  </body>
+</html>

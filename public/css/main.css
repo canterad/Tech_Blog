@@ -1,0 +1,78 @@
+/* Universal Selector: Set the box-sizing to border-box, making the padding and border included in the width and height of a box.
+   Set all padding and margins to zero. */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Set the background color and the font family for the whole page */
+body {
+    background-color: #d9dcd6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header element: Set the border, background color, text color, width and height. */
+header {
+    border: solid;
+    background-color: black;
+    color: white; 
+    width: 100%;
+    height: 150px;
+}
+
+/* Navigation Links: Changed the color of the header navigation links to white. */
+header nav ul li a {
+    color: white;
+}
+
+/* navigation element in header element: Set margins, float left, font size, width and background color. */
+header nav {   
+    margin-top: 20px;
+    margin-left: 25px;
+    float: left;
+    font-size: 20px; 
+    width: 95%;
+    background-color: black;   
+} 
+
+/* ul element in header navagation element: Set list type to none, so no bullets are displayed. */
+header nav ul {
+    list-style-type: none;
+}
+
+/* li element of ul element in header navagation element: Set display inline block, left margin 25 pixels,
+   right margin to 100 pixels. */
+header nav ul li {
+    display: inline-block; 
+    margin-left: 25px;
+    margin-right: 100px;
+
+}
+
+/* class for the title tag element: Set the colors, display mode, margins, padding, rounded corners and shadow. */
+#title_tag {
+    background-color: white;
+    color: black;   
+    display: inline-block;  
+    margin-left: 50px;
+    margin-top: 30px; 
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 5px 5px #888888;
+}
+
+/**********************************************************************************************************
+* MEDIA QUERY SECTION * If the screen is less than or equal to the pixel size then apply these css rules.
+**********************************************************************************************************/
+/* Change the font size for the city label. 
+ /@media screen and (max-width: 1200px){ 
+//    .city_label{
+        font-size: 24px;
+    }
+}
+*********************************************************/
+
