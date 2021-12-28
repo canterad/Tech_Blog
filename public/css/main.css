@@ -65,6 +65,52 @@ header nav ul li {
     box-shadow: 5px 5px #888888;
 }
 
+/* class for the blog item element: Set the border values, width and left margin.  */
+#blog_item {
+    border: 5px solid black;
+    width: 95%;
+    margin-left: 45px;
+    margin-top:15px;
+
+
+}
+
+/* class for the blog title element: Set the background and text color. */
+#blog_title {
+    background-color: black;
+    color: white;
+
+}
+
+/* class for the title data element: Make the element an inline block and set the padding values. */
+#title_data {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+/* class for the posted data element: Position the element to the right and set the padding values. */
+#posted_data {
+    float: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+/* class for the blog content element: Set the padding values. */
+#blog_content {
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+}
+
+/* class for the blog link element: Set the text color to white. */
+#blog_link {
+    color: white;
+}
+
 /**********************************************************************************************************
 * MEDIA QUERY SECTION * If the screen is less than or equal to the pixel size then apply these css rules.
 **********************************************************************************************************/

@@ -1,3 +1,49 @@
-<!-- {{#each galleries as |gallery|}} -->
-<!--  {{> gallery-details}} -->
-<!-- {{/each}} -->
+
+<!-- ************************************************************************** 
+     Had to set this up this way with #each statments with #if statements.
+     I could not get it to work the other way around with #if statements inside
+     one #each statement.
+******************************************************************************** -->     
+
+{{#if loggedIn}}
+
+    {{#each blogs as |blog|}} 
+        <div id="blog_item">
+            <div id="blog_title">
+                <a id="blog_link" href="/home"><h3 id="title_data">{{blog.title}}</h3></a> 
+                <p id="posted_data">Posted by {{blog.user.name}} on {{blog.dateposted}}</p>
+            </div>
+
+            <p id="blog_content">{{blog.content}}</p>
+        </div>
+    {{/each}} 
+
+{{else}}
+
+    {{#each blogs as |blog|}} 
+        <div id="blog_item">
+            <div id="blog_title">
+                <h3 id="title_data">{{blog.title}}</h3>
+                <p id="posted_data">Posted by {{blog.user.name}} on {{blog.dateposted}}</p>
+            </div>
+
+            <p id="blog_content">{{blog.content}}</p>
+        </div>
+    {{/each}} 
+
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

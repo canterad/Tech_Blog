@@ -4,7 +4,7 @@ const commentData = [
   {
     blog_id: 1, 
     content: 'I just learned about this in my class!',
-    dateposted: Date.now(),    
+    dateposted: new Date().toLocaleDateString(),    
   },
 ];
 

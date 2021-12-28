@@ -31,7 +31,7 @@ Blog.init(
       allowNull: false,      
     },
     dateposted: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: false,
     }, 
   },
