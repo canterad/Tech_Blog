@@ -27,7 +27,7 @@
                 <!-- if logged in then display logout link. -->
                 {{#if loggedIn}}
                     <li>
-                        <a href="/home">Logout</a>
+                        <a href="/">Logout</a>
                     </li>    
                 {{else}}
                 <!-- Otherwise, show a link to login -->
@@ -39,7 +39,11 @@
         </nav>
         
         <div id="title_tag">
-          <h1>The Tech Blog</h1> 
+          {{#if dashboardPage}}
+              <h1>Your Dashboard</h1>
+          {{else}}
+              <h1>The Tech Blog</h1>          
+          {{/if}} 
         </div>  
                      
     </header>
