@@ -1,6 +1,9 @@
 const router = require('express').Router();
-const { User, Blog } = require('../models');
+const { User, Blog, Comment } = require('../models');
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// This is the get call to get all of the blogs for the homepage.
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/', async (req, res) => {
   try 
   {
@@ -24,14 +27,19 @@ router.get('/', async (req, res) => {
   }
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////
 // I need to add the following routes.
 // Get all the dashboard items - Display the Dashboard page.
 // login operation - Display the Login - Signup page.
 // logout operation - Not needed? Get all the blogs and display the home page - Not sure?.
 // Add a comment operation - Get a specific blog and display the comment page.
 // Add, Edit, Delete a blog - Create New Post, Edit Post page displayed.
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Route to get, display the login page.
+///////////////////////////////////////////////////////////////////////////
+// THIS CODE WAS IN THIS FILE ORIGINALLY, NOT SURE IF I WILL USE IT.
+///////////////////////////////////////////////////////////////////////////
 router.get('/login', async (req, res) => {
   try
   {
@@ -44,7 +52,10 @@ router.get('/login', async (req, res) => {
   }
 });
 
+////////////////////////////////////////////////////////////////////////////////////////
 // Route to get, display the dashboard page.
+// This just renders the page.  Not getting the data and passing in a model yet.
+////////////////////////////////////////////////////////////////////////////////////////
 router.get('/dashboard', async (req, res) => {
   try
   {
@@ -57,12 +68,17 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
+/////////////////////////////////////////////////////////////////////////////////////
 // Route to bring up page to add a comment to a blog.
+// This just renders the page.  Not getting the data and passing in a model yet.
+// NOT SURE IF I WILL NEED THIS.
+////////////////////////////////////////////////////////////////////////////////////
 router.get('/comment', async (req, res) => {
   try
   {
     res.render('comment', { loggedIn: true,
-                            dashboardPage: false });
+                            dashboardPage: false,
+                            commentPage: true, });
   }
   catch (err)
   {
@@ -71,20 +87,46 @@ router.get('/comment', async (req, res) => {
 });
 
 
-
-
-
-
-
-// Get category by id value passed in.
-router.get('/comment/:id', async (req, res) => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// This route will bring up the Comment page if adding a new one or displaying one that exists.
+// If we are creating a new comment the id value is zero and we use the blog_id instead to get the blog
+// and include the user.
+//
+// If we are diplaying an existing comment then use the id parameter value and get the comment
+// and include the blog and user.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+router.get('/comment/:id/:blog_id', async (req, res) => {
   try 
   {
-    // Call the findByPk method of the blog model to get the record from the blog table
-    // that matches the id value.  Include the Product model.
-    const blogData = await Blog.findByPk(req.params.id, {
+    let bAddComment = false;
+    let blogData = null;
+
+    // If the id parameter value is zero then use the blog id and get the blog record and do not
+    // include the Comment model.
+    if (req.params.id == "0")
+    {
+      // Set the boolean value to true because we are adding a new comment.
+      bAddComment = true;
+
+        blogData = await Blog.findByPk(req.params.blog_id, {
         include: [{ model: User }],
-    });
+      });
+    }    
+    // Otherwise get the comment record and include the blog and user models.
+    else
+    {
+        blogData = await Comment.findByPk(req.params.id, {
+        include: 
+        [
+          {
+            model: Blog,
+          },
+          {
+            model: User, 
+          }
+        ],
+      });
+    }
 
     // If the Blog id not found tell the user.
     if (!blogData) {
@@ -92,12 +134,14 @@ router.get('/comment/:id', async (req, res) => {
       return;
     }
 
+    // Get the data for just the one item.
     const blogItem = blogData.get({ plain: true });
-
-    //res.render('comment', blogData.dataValues);
     
+    console.log(blogItem);
+
+    // Render the comment view pass in the blogItem model and other values that the page tests.
     res.render('comment', {blogItem, loggedIn: true,
-      dashboardPage: false, commentPage: true,});
+      dashboardPage: false, commentPage: true, addComment: bAddComment,});
   } 
   catch (err) 
   {
@@ -106,15 +150,10 @@ router.get('/comment/:id', async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////
 // Route to bring up page to add or edit a blog post.
+// This routine is just displaying the blog page for now.
+///////////////////////////////////////////////////////////////////////
 router.get('/blog', async (req, res) => {
   try
   {

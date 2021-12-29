@@ -24,6 +24,14 @@ Comment.init(
         unique: false,
       },            
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: User,
+        key: 'id',
+        unique: false,
+      },            
+    },    
     content: {
       type: DataTypes.STRING,
       allowNull: false,      

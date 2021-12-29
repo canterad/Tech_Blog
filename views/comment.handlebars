@@ -1,14 +1,48 @@
+<!-- If addComment is true we are adding a comment.  We do not have a comment. 
+     The model passed in is the blog and it includes the user. -->
 
-<div id="blog_item">
-    <div id="blog_title">
-        <h3 id="title_data">{{blogItem.title}}</h3>
-        <p id="posted_data">Posted by {{blogItem.user.name}} on {{blogItem.dateposted}}</p>
+{{#if addComment}}
+
+    <div id="blog_item">
+        <div id="blog_title">
+            <h3 id="title_data">{{blogItem.title}}</h3>
+            <p id="posted_data">Posted by {{blogItem.user.name}} on {{blogItem.dateposted}}</p>
+        </div>
+
+        <p id="blog_content">{{blogItem.content}}</p>
     </div>
 
-    <p id="blog_content">{{blogItem.content}}</p>
-</div>
+    <div id="add_comment_item">
+        <div id="add_comment_title"></div>  
+        <p class="comment_title">Comment</p>
+        <textarea id="add_comment_textbox" rows="4" cols="50"></textarea>
+        <button type="button" id="AddComment">Submit</button>
+    </div>
 
-<button type="button" id="AddComment">Submit</button>
+<!-- Else addComment is false, We have a comment.  The model passed in is the comment and
+     it includes the blog and user. -->
+
+{{else}}
+
+    <div id="blog_item">
+        <div id="blog_title">
+            <h3 id="title_data">{{blogItem.blog.title}}</h3>
+            <p id="posted_data">Posted by {{blogItem.user.name}} on {{blogItem.blog.dateposted}}</p>
+        </div>
+
+        <p id="blog_content">{{blogItem.blog.content}}</p>
+    </div>
+
+   <div id="display_comment_item">
+        <div id="display_comment_title"></div>  
+        <p id="display_comment_text" class="comment_title">{{blogItem.content}}</p>
+    </div>    
+
+{{/if}} 
+
+<!-- Save the blog id and user id values so have them on the client side. -->
+<input type="hidden" id="blogid" value="{{blogItem.id}}">
+<input type="hidden" id="userid" value="{{blogItem.user.id}}">        
 
  
 

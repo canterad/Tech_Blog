@@ -10,12 +10,16 @@
     {{#each blogs as |blog|}} 
         <div id="blog_item">
             <div id="blog_title">
-                <a id="blog_link" href="/comment/{{blog.id}}"><h3 id="title_data">{{blog.title}}</h3></a> 
+                <a id="blog_link" href="/comment/0/{{blog.id}}"><h3 id="title_data">{{blog.title}}</h3></a> 
                 <p id="posted_data">Posted by {{blog.user.name}} on {{blog.dateposted}}</p>
             </div>
 
             <p id="blog_content">{{blog.content}}</p>
         </div>
+
+        <!-- Save the blog id and user id values so have them on the client side. -->
+        <input type="hidden" id="blogid" value="{{blog.id}}">
+        <input type="hidden" id="userid" value="{{blog.user.id}}">        
     {{/each}} 
 
 {{else}}
@@ -29,6 +33,10 @@
 
             <p id="blog_content">{{blog.content}}</p>
         </div>
+
+       <!-- Save the blog id and user id values so have them on the client side. -->
+        <input type="hidden" id="blogid" value="{{blog.id}}">
+        <input type="hidden" id="userid" value="{{blog.user.id}}">                
     {{/each}} 
 
 {{/if}}

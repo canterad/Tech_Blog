@@ -25,6 +25,17 @@ Blog.hasMany(Comment, {
   onDelete: 'CASCADE',
 });
 
+// Comment belongsTo User.
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+// User has many Comments.
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+
 module.exports = {
     User,
     Blog,
