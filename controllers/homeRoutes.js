@@ -70,6 +70,50 @@ router.get('/comment', async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+// Get category by id value passed in.
+router.get('/comment/:id', async (req, res) => {
+  try 
+  {
+    // Call the findByPk method of the blog model to get the record from the blog table
+    // that matches the id value.  Include the Product model.
+    const blogData = await Blog.findByPk(req.params.id, {
+        include: [{ model: User }],
+    });
+
+    // If the Blog id not found tell the user.
+    if (!blogData) {
+      res.status(404).json({ message: 'No blog found with that id!' });
+      return;
+    }
+
+    const blogItem = blogData.get({ plain: true });
+
+    //res.render('comment', blogData.dataValues);
+    
+    res.render('comment', {blogItem, loggedIn: true,
+      dashboardPage: false, commentPage: true,});
+  } 
+  catch (err) 
+  {
+    // Return the status code of 500 - the error object.
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
+
+
+
 // Route to bring up page to add or edit a blog post.
 router.get('/blog', async (req, res) => {
   try
