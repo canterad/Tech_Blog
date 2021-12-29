@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
     // Need to set this up to get value from session variable.
     //res.render('homepage', {blogs, loggedIn: true, });
-    res.render('homepage', {blogs, loggedIn: true,
+    res.render('homepage', {blogs, loggedIn: false,
                                    dashboardPage: false});
   
   } 
