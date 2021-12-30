@@ -53,14 +53,17 @@
     </main>
 
     <!-- If the user is logged in, load the JS script for when they logout -->
-    {{#if loggedIn}} 
-      <script src="../public/js/logout.js"></script>
+    {{#if loginPage}} 
+      <script src="/js/login.js"></script>
     {{/if}} 
 
     {{#if commentPage}}
         <script src="/js/comment.js"></script>
     {{/if}}
 
-    <!-- <script src="assets/js/script.js"></script>  -->
+    {{#if dashboardPage}}
+        <script src="/js/NewPost.js"></script>
+    {{/if}}
+
   </body>
 </html>

@@ -26,7 +26,7 @@ header nav ul li a {
     color: white;
 }
 
-/* navigation element in header element: Set margins, float left, font size, width and background color. */
+/* Navigation element in header element: Set margins, float left, font size, width and background color. */
 header nav {   
     margin-top: 20px;
     margin-left: 25px;
@@ -50,7 +50,7 @@ header nav ul li {
 
 }
 
-/* class for the title tag element: Set the colors, display mode, margins, padding, rounded corners and shadow. */
+/* Class for the title tag element: Set the colors, display mode, margins, padding, rounded corners and shadow. */
 #title_tag {
     background-color: white;
     color: black;   
@@ -65,7 +65,7 @@ header nav ul li {
     box-shadow: 5px 5px #888888;
 }
 
-/* class for the blog item element: Set the border values, width and left margin.  */
+/* Class for the blog item element: Set the border values, width and left margin.  */
 #blog_item {
     border: 5px solid black;
     width: 95%;
@@ -75,14 +75,14 @@ header nav ul li {
 
 }
 
-/* class for the blog title element: Set the background and text color. */
+/* Class for the blog title element: Set the background and text color. */
 #blog_title {
     background-color: black;
     color: white;
 
 }
 
-/* class for the title data element: Make the element an inline block and set the padding values. */
+/* Class for the title data element: Make the element an inline block and set the padding values. */
 #title_data {
     display: inline-block;
     padding-top: 10px;
@@ -90,7 +90,7 @@ header nav ul li {
     padding-left: 10px;
 }
 
-/* class for the posted data element: Position the element to the right and set the padding values. */
+/* Class for the posted data element: Position the element to the right and set the padding values. */
 #posted_data {
     float: right;
     padding-top: 10px;
@@ -98,7 +98,7 @@ header nav ul li {
     padding-right: 10px;
 }
 
-/* class for the blog content element: Set the padding values. */
+/* Class for the blog content element: Set the padding values. */
 #blog_content {
     padding-top: 15px;
     padding-left: 10px;
@@ -106,12 +106,12 @@ header nav ul li {
     padding-bottom: 15px;
 }
 
-/* class for the blog link element: Set the text color to white. */
+/* Class for the blog link element: Set the text color to white. */
 #blog_link {
     color: white;
 }
 
-/* class for the add comment item element: Set the border values, width and left margin.  */
+/* Class for the add comment item element: Set the border values, width and left margin.  */
 #add_comment_item {
     border: 5px solid black;
     width: 95%;
@@ -120,20 +120,20 @@ header nav ul li {
     height: 200px;
 }
 
-/* class for the add comment title element: Set the background and text color. */
+/* Class for the add comment title element: Set the background and text color. */
 #add_comment_title {
     background-color: black;
     color: white;
     height: 40px;
 }
 
-/* class for the comment text: Position the element, adjust the margins. */
+/* Class for the comment text: Position the element, adjust the margins. */
 .comment_title{
     margin-left: 12px;  
     margin-top: 10px;  
 }
 
-/* class for the comment area textbox: Position the element, adjust the margins. Make display block so nothing after it.*/
+/* Class for the comment area textbox: Position the element, adjust the margins. Make display block so nothing after it.*/
 #add_comment_textbox {
     margin-left: 10px;
     margin-top: 5px;
@@ -142,7 +142,7 @@ header nav ul li {
     font-size: 14px;
 }
 
-/* class for add comment button: Position it, deal with colors, font size and rounded borders. */
+/* Class for add comment button: Position it, deal with colors, font size and rounded borders. */
 #AddComment {
     margin-left: 10px;
     margin-top: 5px;
@@ -156,7 +156,7 @@ header nav ul li {
     cursor: pointer;
 }
 
-/* class for the display comment item element: Set the border values, width, height and left margin.  */
+/* Class for the display comment item element: Set the border values, width, height and left margin.  */
 #display_comment_item {
     border: 5px solid black;
     width: 95%;
@@ -165,14 +165,14 @@ header nav ul li {
     height: 200px;
 }
 
-/* class for the display comment title element: Set the background and text color and height. */
+/* Class for the display comment title element: Set the background and text color and height. */
 #display_comment_title {
     background-color: black;
     color: white;
     height: 40px;
 }
 
-/* class for login item element: Set the border width margin and height. */
+/* Class for login item element: Set the border width margin and height. */
 #login_item {
     border: 5px solid black;
     width: 95%;
@@ -181,13 +181,13 @@ header nav ul li {
     margin-top: 15px;
 }
 
-/* class for login item title area: Set the colors for background color and text.*/
+/* Class for login item title area: Set the colors for background color and text.*/
 #login_title {
     background-color: black;
     color: white;
 }
 
-/* class for login title data: Set the display to inline-block and set the padding values. */
+/* Class for login title data: Set the display to inline-block and set the padding values. */
 #login_title_data {
     display: inline-block;
     padding-top: 10px;
@@ -195,28 +195,28 @@ header nav ul li {
     padding-left: 10px;
 }
 
-/* class for login text elements: Set the height, width and left margin values. */
+/* Class for login text elements: Set the height, width and left margin values. */
 .LoginText {
     margin-left: 12px;
     width: 98%; 
     height: 40px; 
 }
 
-/* class for login header one - Username: Set the margins and font weight. */
+/* Class for login header one - Username: Set the margins and font weight. */
 .login_header1 {
     margin-left: 12px;  
     margin-top: 10px; 
     font-weight: bold;  
 }
 
-/* class for login header two - Password: Set the margins and font weight. */
+/* Class for login header two - Password: Set the margins and font weight. */
 .login_header2 {
     margin-left: 12px;  
     margin-top: 20px; 
     font-weight: bold;  
 }
 
-/* class for login button: Set margins, width, height, colors, border, font-size and cursor.*/
+/* Class for login button: Set margins, width, height, colors, border, font-size and cursor.*/
 #btnLogin {
     margin-left: 10px;
     margin-top: 15px;
@@ -230,7 +230,7 @@ header nav ul li {
     cursor: pointer;
 }
 
-/* class for switch button: Set margins, width, height, colors, border, font-size and cursor.*/
+/* Class for switch button: Set margins, width, height, colors, border, font-size and cursor.*/
 #btnSwitch {
     background-color: gray;
     border-radius: 5px;
@@ -242,12 +242,112 @@ header nav ul li {
     margin-top: 15px;      
 }
 
-
+/* Class for covering the password text with solid squares. */
 #txtPassword {
     -webkit-text-security: square; 
     font-size: 18px;    
 }
 
+/* Class for Dashboard Item element: Set border, width, left margin, rounded corners, top margin and colors. */
+#DashboardItem {
+    border: 5px solid gray;
+    width: 95%;
+    margin-left: 45px;  
+    border-radius: 5px; 
+    color: white;
+    background-color: gray; 
+    margin-top: 15px;
+}
+
+/* Class for Dashboard Link Text: Set the text color to white. */
+#DashboardLink {
+    color: white;
+}
+
+/* Class for Dashboard Title element: Set the background and text colors. */
+#DashboardTitle {
+    background-color: gray;
+    color: white;
+}
+
+/* Class for the NewPost Div so can position at the bottom of the page. */
+.NewPostDiv {
+    position:absolute; 
+    margin-left:-50px; 
+    left:50%; 
+    width:100px; 
+    bottom:10px;
+}
+
+/* Class for New Post Button: Set the styles for this button. */
+.NewPostButton {
+    height: 50px; 
+    width: 150px;  
+    border-radius: 5px; 
+    background-color: black; 
+    color: white; 
+    cursor:pointer; 
+    font-size: 18px;
+}
+
+/* Class for the Post Item element: Set the border, width, left and top margins and height. */
+#PostItem {
+    border: 5px solid black;
+    width: 95%;
+    margin-left: 45px;
+    height: 340px;  
+    margin-top: 20px;  
+}
+
+/* Class for Post Title: Set the background color and text color. */
+#PostTitle {
+    background-color: black;
+    color: white;    
+}
+
+/* Class for Post Title Text: Set display to inline block and set the padding values. */
+.PostTitleData {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;    
+}
+
+/* Class for Post Header 1 - Title: Set the margins and font weight. */
+.PostHeader1 {
+    margin-left: 12px;  
+    margin-top: 10px; 
+    font-weight: bold;  
+}
+
+/* Class for Post Header 2 - Content: Set the margins and font weight. */
+.PostHeader2 {
+    margin-left: 12px;  
+    margin-top: 20px; 
+    font-weight: bold;  
+}
+
+/* Class for the Post Comment area textbox: Position the element, adjust the margins. Make display block so nothing 
+   after it.*/
+#PostCommentTextbox {
+    margin-left: 10px;
+    display: block;
+    width: 98%;
+}
+
+/* Class for all of the Post buttons: Set margins, width, height, color, border, font-size and cursor. */
+.btnPost {
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 98%;
+    height: 40px;
+    background-color: gray;
+    border-radius: 5px;
+    color: white;
+    border: 5px solid gray;
+    font-size: 18px;
+    cursor: pointer;
+}
 
 /**********************************************************************************************************
 * MEDIA QUERY SECTION * If the screen is less than or equal to the pixel size then apply these css rules.

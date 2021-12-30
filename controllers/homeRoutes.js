@@ -44,7 +44,8 @@ router.get('/login', async (req, res) => {
   try
   {
     res.render('login', { loggedIn: false,
-                          dashboardPage: false });
+                          dashboardPage: false,
+                          loginPage: true });
   }
   catch (err)
   {
@@ -154,11 +155,26 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
 // Route to bring up page to add or edit a blog post.
 // This routine is just displaying the blog page for now.
 ///////////////////////////////////////////////////////////////////////
-router.get('/blog', async (req, res) => {
+router.get('/blog/:id', async (req, res) => {
   try
   {
-    res.render('blog', { loggedIn: true,
-                         dashboardPage: true });
+    if (req.params.id != "0")
+    {
+        const blogData = await Blog.findByPk(req.params.id, { });
+
+        // Get the data for just the one item.
+        const blogItem = blogData.get({ plain: true });
+
+        res.render('blog', {blogItem, loggedIn: true,
+                                      dashboardPage: true,
+                                      newPost: false, });        
+    }
+    else
+    {
+        res.render('blog', { loggedIn: true,
+                         dashboardPage: true,
+                         newPost: true, });
+    }
   }
   catch (err)
   {

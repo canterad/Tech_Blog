@@ -1,4 +1,24 @@
-<h1>Edit - Create New Blog Page</h1>
+<div id="PostItem">
+    <div id="PostTitle">
+        {{#if newPost}} 
+            <h3 class="PostTitleData">Create New Post</h3>
+        {{else}}
+            <h3 class="PostTitleData">Edit Post</h3>  
+        {{/if}}         
+    </div>
+    <div id="PostInput"></div>
+    <p class="PostHeader1">Title</p>
+    <input type="text" id="txtUsername" class="LoginText">
+    <p class="PostHeader2">Content</p>
+    <textarea id="PostCommentTextbox" rows="4" cols="50"></textarea>  
+
+    {{#if newPost}}             
+        <button class="btnPost" type="button" id="btnPostCreate">Create</button>    
+    {{else}}        
+        <button class="btnPost" type="button" id="btnPostUpdate">Update Post</button>  
+        <button class="btnPost" type="button" id="btnPostDelete">Delete</button>                                
+    {{/if}}             
+</div>   
 
 
 

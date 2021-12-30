@@ -1,50 +1,43 @@
-const loginFormHandler = async (event) => {
-  event.preventDefault();
+let btnOperation = null;
+let btnSwitch = null;
+ 
+btnOperation = document.getElementById("btnLogin");
+btnOperation.addEventListener("click", PerformOperation);
 
-  const email = document.querySelector('#email-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
+btnSwitch = document.getElementById("btnSwitch");
+btnSwitch.addEventListener("click", PerformSwitch);
 
-  if (email && password) {
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+function PerformSwitch()
+{
+    let OperationMode = null;
+    let OperationValue = 0;
+    let login_title_data = null;
+    
+    login_title_data = document.getElementById("login_title_data");    
+    OperationMode = document.getElementById("OperationMode");
+    OperationValue = OperationMode.value;
 
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to log in.');
+    // If operation value is login, switch to Sign Up.
+    if (OperationValue == 1)
+    {
+        // Set the OperationMode value.
+        OperationMode.value = 2;
+        btnOperation.innerText = "Sign Up!";
+        btnSwitch.innerText = "Login instead";
+        login_title_data.innerText = "Sign Up";              
     }
-  }
-};
-
-const signupFormHandler = async (event) => {
-  event.preventDefault();
-
-  const username = document.querySelector('#username-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
-
-  if (username && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ username, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to sign up.');
+    // Else switch operation from Sign Up to Login.
+    else
+    {
+        // Set the OperationMode value.
+        OperationMode.value = 1;
+        btnOperation.innerText = "Login!";
+        btnSwitch.innerText = "Sign Up instead";  
+        login_title_data.innerText = "Login";      
     }
-  }
-};
+}
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+function PerformOperation()
+{
+  alert("Got to PerformOperation function.");
+}
