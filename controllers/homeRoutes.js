@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { User, Blog, Comment } = require('../models');
+const withAuth = require('../utils/auth');
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // This is the get call to get all of the blogs for the homepage.
@@ -17,7 +19,7 @@ router.get('/', async (req, res) => {
 
     // Need to set this up to get value from session variable.
     //res.render('homepage', {blogs, loggedIn: true, });
-    res.render('homepage', {blogs, loggedIn: false,
+    res.render('homepage', {blogs, loggedIn: req.session.logged_in,
                                    dashboardPage: false});
   
   } 
@@ -27,23 +29,31 @@ router.get('/', async (req, res) => {
   }
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// I need to add the following routes.
-// Get all the dashboard items - Display the Dashboard page.
-// login operation - Display the Login - Signup page.
-// logout operation - Not needed? Get all the blogs and display the home page - Not sure?.
-// Add a comment operation - Get a specific blog and display the comment page.
-// Add, Edit, Delete a blog - Create New Post, Edit Post page displayed.
-/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// This is the route for the log out operation.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) 
+  {
+    // Remove the session variables
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } 
+  else 
+  {
+    res.status(404).end();
+  }
+});
 
+////////////////////////////////////////////////////////////////////////////
 // Route to get, display the login page.
-///////////////////////////////////////////////////////////////////////////
-// THIS CODE WAS IN THIS FILE ORIGINALLY, NOT SURE IF I WILL USE IT.
+// This is rendering the login page, no data model is used.
 ///////////////////////////////////////////////////////////////////////////
 router.get('/login', async (req, res) => {
   try
   {
-    res.render('login', { loggedIn: false,
+    res.render('login', { loggedIn: req.session.logged_in,
                           dashboardPage: false,
                           loginPage: true });
   }
@@ -57,10 +67,10 @@ router.get('/login', async (req, res) => {
 // Route to get, display the dashboard page.
 // This just renders the page.  Not getting the data and passing in a model yet.
 ////////////////////////////////////////////////////////////////////////////////////////
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard',  withAuth, async (req, res) => {
   try
   {
-    res.render('dashboard', { loggedIn: true,
+    res.render('dashboard', { loggedIn: req.session.logged_in,
                               dashboardPage: true });
   }
   catch (err)
@@ -68,25 +78,6 @@ router.get('/dashboard', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-/////////////////////////////////////////////////////////////////////////////////////
-// Route to bring up page to add a comment to a blog.
-// This just renders the page.  Not getting the data and passing in a model yet.
-// NOT SURE IF I WILL NEED THIS.
-////////////////////////////////////////////////////////////////////////////////////
-router.get('/comment', async (req, res) => {
-  try
-  {
-    res.render('comment', { loggedIn: true,
-                            dashboardPage: false,
-                            commentPage: true, });
-  }
-  catch (err)
-  {
-    res.status(500).json(err);
-  }
-});
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This route will bring up the Comment page if adding a new one or displaying one that exists.
@@ -141,7 +132,7 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
     console.log(blogItem);
 
     // Render the comment view pass in the blogItem model and other values that the page tests.
-    res.render('comment', {blogItem, loggedIn: true,
+    res.render('comment', {blogItem, loggedIn: req.session.logged_in,
       dashboardPage: false, commentPage: true, addComment: bAddComment,});
   } 
   catch (err) 
@@ -151,27 +142,31 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
   }
 });
 
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 // Route to bring up page to add or edit a blog post.
-// This routine is just displaying the blog page for now.
-///////////////////////////////////////////////////////////////////////
+// This routine is tesing the id value passed in.  If the id value is zero then we just
+// render the page because we are creating a new blog.  Otherwise we get the blog and
+// render it on the page for the update or delete operation.
+/////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/blog/:id', async (req, res) => {
   try
   {
     if (req.params.id != "0")
     {
-        const blogData = await Blog.findByPk(req.params.id, { });
+        const blogData = await Blog.findByPk(req.params.id, {
+          include: [{ model: User }],
+         });
 
         // Get the data for just the one item.
         const blogItem = blogData.get({ plain: true });
 
-        res.render('blog', {blogItem, loggedIn: true,
+        res.render('blog', {blogItem, loggedIn: req.session.logged_in,
                                       dashboardPage: true,
                                       newPost: false, });        
     }
     else
     {
-        res.render('blog', { loggedIn: true,
+        res.render('blog', { loggedIn: req.session.logged_in,
                          dashboardPage: true,
                          newPost: true, });
     }
@@ -181,6 +176,5 @@ router.get('/blog/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;

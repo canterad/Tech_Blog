@@ -28,6 +28,7 @@ const PORT = process.env.PORT || 3001;
 // Create the express handlebar.
 const hbs = exphbs.create({});
 
+/*******************************************************************************************************
 // Sets up session and connect to our Sequelize db
 const sess = {
   secret: 'Super secret secret',
@@ -51,6 +52,18 @@ const sess = {
   store: new SequelizeStore({
     db: sequelize,
   }),
+};
+**************************************************************************************************************/
+
+// Configure and link a session object with the sequelize store
+const sess = {
+  secret: 'Super secret secret',
+  cookie: { secure: false },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
 };
 
 // Add the session to the express application server.

@@ -8,9 +8,20 @@
     </div>
     <div id="PostInput"></div>
     <p class="PostHeader1">Title</p>
-    <input type="text" id="txtUsername" class="LoginText">
+
+    {{#if newPost}} 
+        <input type="text" id="txtTitle" class="LoginText">
+    {{else}}        
+        <input type="text" id="txtTitle" class="LoginText" value="{{blogItem.title}}">
+    {{/if}}      
+
     <p class="PostHeader2">Content</p>
-    <textarea id="PostCommentTextbox" rows="4" cols="50"></textarea>  
+
+    {{#if newPost}}     
+        <textarea id="PostCommentTextbox" rows="4" cols="50"></textarea>  
+    {{else}}
+        <textarea id="PostCommentTextbox" rows="4" cols="50">{{blogItem.content}}</textarea>      
+    {{/if}}                
 
     {{#if newPost}}             
         <button class="btnPost" type="button" id="btnPostCreate">Create</button>    
@@ -20,6 +31,9 @@
     {{/if}}             
 </div>   
 
+<!-- Save the blog id and user id values so have them on the client side. -->
+<input type="hidden" id="blogid" value="{{blogItem.id}}">
+<input type="hidden" id="userid" value="{{blogItem.user.id}}">        
 
 
 

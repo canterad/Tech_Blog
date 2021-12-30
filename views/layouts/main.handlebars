@@ -27,7 +27,7 @@
                 <!-- if logged in then display logout link. -->
                 {{#if loggedIn}}
                     <li>
-                        <a href="/">Logout</a>
+                        <a id="logout" href="/logout">Logout</a>
                     </li>    
                 {{else}}
                 <!-- Otherwise, show a link to login -->
@@ -64,6 +64,8 @@
     {{#if dashboardPage}}
         <script src="/js/NewPost.js"></script>
     {{/if}}
+
+    <script src="/js/logout.js"></script>    
 
   </body>
 </html>

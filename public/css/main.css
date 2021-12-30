@@ -117,7 +117,7 @@ header nav ul li {
     width: 95%;
     margin-left: 45px;
     margin-top: 15px;
-    height: 200px;
+    height: 225px;
 }
 
 /* Class for the add comment title element: Set the background and text color. */
@@ -131,6 +131,7 @@ header nav ul li {
 .comment_title{
     margin-left: 12px;  
     margin-top: 10px;  
+    Font-Size: 18px;
 }
 
 /* Class for the comment area textbox: Position the element, adjust the margins. Make display block so nothing after it.*/
@@ -139,7 +140,7 @@ header nav ul li {
     margin-top: 5px;
     display: block;
     width: 99%;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 /* Class for add comment button: Position it, deal with colors, font size and rounded borders. */
@@ -162,7 +163,7 @@ header nav ul li {
     width: 95%;
     margin-left: 45px;
     margin-top: 15px;
-    height: 200px;
+    height: 225px;
 }
 
 /* Class for the display comment title element: Set the background and text color and height. */
@@ -200,6 +201,7 @@ header nav ul li {
     margin-left: 12px;
     width: 98%; 
     height: 40px; 
+    font-size: 18px;
 }
 
 /* Class for login header one - Username: Set the margins and font weight. */
@@ -295,7 +297,7 @@ header nav ul li {
     border: 5px solid black;
     width: 95%;
     margin-left: 45px;
-    height: 340px;  
+    height: 365px;  
     margin-top: 20px;  
 }
 
@@ -333,6 +335,7 @@ header nav ul li {
     margin-left: 10px;
     display: block;
     width: 98%;
+    font-size: 18px;
 }
 
 /* Class for all of the Post buttons: Set margins, width, height, color, border, font-size and cursor. */
