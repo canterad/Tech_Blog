@@ -36,8 +36,8 @@ const sess = {
   // to our session options.
   cookie: {
     // maxAge sets the maximum age for the session to be active. Listed in milliseconds.
-    // 60,000 milliseconds = 1 minute.  10 minutes = 600000. 
-    maxAge: 600000,
+    // 60,000 milliseconds = 1 minute.  5 minutes = 300000. 
+    maxAge: 300000,
     // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP.
     httpOnly: true,
     // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to true, 
@@ -54,21 +54,6 @@ const sess = {
     db: sequelize,
   }),
 };
-
-
-/**********************************************************************
-// Configure and link a session object with the sequelize store
-const sess = {
-  secret: 'Super secret secret',
-  cookie: { secure: false },
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
-};
-*************************************************************************/
-
 
 // Add the session to the express application server.
 app.use(session(sess));

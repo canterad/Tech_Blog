@@ -1,6 +1,9 @@
 let LogoutLink = null;
 LogoutLink = document.getElementById("logout");
-LogoutLink.addEventListener("click", PerformLogout);
+if (LogoutLink != null)
+{
+  LogoutLink.addEventListener("click", PerformLogout);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: PerformLogout - This function is called when the logout link is clicked.
@@ -11,7 +14,6 @@ function PerformLogout()
 {
   setTimeout(() => { DoDocumentReplace("/"); }, 500);    
 }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: DoDocumentReplace - This function will call document.location.replace using the URL

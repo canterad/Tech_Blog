@@ -4,11 +4,17 @@ let btnSwitch = null;
 
 // Get the operation button and set up event listener.
 btnOperation = document.getElementById("btnLogin");
-btnOperation.addEventListener("click", PerformOperation);
+if (btnOperation != null)
+{
+    btnOperation.addEventListener("click", PerformOperation);
+}
 
 // Get the switch button and set up the event listener.
 btnSwitch = document.getElementById("btnSwitch");
-btnSwitch.addEventListener("click", PerformSwitch);
+if (btnSwitch != null)
+{
+  btnSwitch.addEventListener("click", PerformSwitch);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: PerformSwitch - This function will change the text when the uses selects the switch button.
@@ -141,7 +147,7 @@ async function PerformLogIn(szUsername, szPassword)
     {
       if (response.status == 400)
       {
-          // Get the id of the new comment record created.
+          // Get the message sent from the server.
           data = await response.json();
           alert("The Login Operation Failed.\r\n" + data.message);
       }

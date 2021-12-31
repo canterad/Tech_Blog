@@ -1,7 +1,10 @@
 let btnAddComment = null;
  
 btnAddComment = document.getElementById("AddComment");
-btnAddComment.addEventListener("click", AddComment);
+if(btnAddComment != null)
+{
+  btnAddComment.addEventListener("click", AddComment);
+}
 
 async function AddComment()
 {

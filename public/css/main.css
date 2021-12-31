@@ -12,6 +12,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/********************************************************************************************************/
+/* All Items below are in the main.handlebars view:                                                     */
+/********************************************************************************************************/
+
 /* Header element: Set the border, background color, text color, width and height. */
 header {
     border: solid;
@@ -30,7 +34,7 @@ header nav ul li a {
 header nav {   
     margin-top: 20px;
     margin-left: 25px;
-    float: left;
+    /* float: left; */
     font-size: 20px; 
     width: 95%;
     background-color: black;   
@@ -39,6 +43,11 @@ header nav {
 /* ul element in header navagation element: Set list type to none, so no bullets are displayed. */
 header nav ul {
     list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: nowrap;   
+    align-items: center;        
 }
 
 /* li element of ul element in header navagation element: Set display inline block, left margin 25 pixels,
@@ -65,21 +74,23 @@ header nav ul li {
     box-shadow: 5px 5px #888888;
 }
 
+/********************************************************************************************************/
+/* All Items below are in the homepage.handlebars view:                                                 */
+/********************************************************************************************************/
+
 /* Class for the blog item element: Set the border values, width and left margin.  */
 #blog_item {
     border: 5px solid black;
     width: 95%;
     margin-left: 45px;
     margin-top:15px;
-
-
 }
 
 /* Class for the blog title element: Set the background and text color. */
 #blog_title {
     background-color: black;
     color: white;
-
+    width: 100%;
 }
 
 /* Class for the title data element: Make the element an inline block and set the padding values. */
@@ -89,6 +100,10 @@ header nav ul li {
     padding-bottom: 10px;
     padding-left: 10px;
 }
+
+/********************************************************************************************************/
+/* All Items below are in the comment.handlebars view:                                                  */
+/********************************************************************************************************/
 
 /* Class for the posted data element: Position the element to the right and set the padding values. */
 #posted_data {
@@ -134,7 +149,8 @@ header nav ul li {
     Font-Size: 18px;
 }
 
-/* Class for the comment area textbox: Position the element, adjust the margins. Make display block so nothing after it.*/
+/* Class for the comment area textbox: Position the element, adjust the margins. */
+/* Make display block so nothing after it.*/
 #add_comment_textbox {
     margin-left: 10px;
     margin-top: 5px;
@@ -172,6 +188,10 @@ header nav ul li {
     color: white;
     height: 40px;
 }
+
+/********************************************************************************************************/
+/* All Items below are in the login.handlebars view:                                                    */
+/********************************************************************************************************/
 
 /* Class for login item element: Set the border width margin and height. */
 #login_item {
@@ -250,6 +270,10 @@ header nav ul li {
     font-size: 18px;    
 }
 
+/********************************************************************************************************/
+/* All Items below are in the dashboard.handlebars view:                                                */
+/********************************************************************************************************/
+
 /* Class for Dashboard Item element: Set border, width, left margin, rounded corners, top margin and colors. */
 #DashboardItem {
     border: 5px solid gray;
@@ -270,6 +294,7 @@ header nav ul li {
 #DashboardTitle {
     background-color: gray;
     color: white;
+    width: 100%;
 }
 
 /* Class for the NewPost Div so can position at the bottom of the page. */
@@ -291,6 +316,10 @@ header nav ul li {
     cursor:pointer; 
     font-size: 18px;
 }
+
+/********************************************************************************************************/
+/* All Items below are in the blog.handlebars view:                                                     */
+/********************************************************************************************************/
 
 /* Class for the Post Item element: Set the border, width, left and top margins and height. */
 #PostItem {
@@ -355,11 +384,178 @@ header nav ul li {
 /**********************************************************************************************************
 * MEDIA QUERY SECTION * If the screen is less than or equal to the pixel size then apply these css rules.
 **********************************************************************************************************/
-/* Change the font size for the city label. 
- /@media screen and (max-width: 1200px){ 
-//    .city_label{
-        font-size: 24px;
+@media screen and (max-width: 1300px){
+    #blog_item {
+        width: 95%;
+    }
+
+    #PostItem {
+        width: 95%;
+    }
+
+    #DashboardItem {
+        width: 95%;
+    }
+
+    #login_item {
+        width: 95%;
+    }
+} 
+
+@media screen and (max-width: 1000px){
+    #blog_item {
+        width: 90%;
+    }
+
+    #PostItem {
+        width: 90%;
+    }
+
+    #DashboardItem {
+        width: 90%;
+    }
+
+    #login_item {
+        width: 90%;
+    }
+} 
+
+@media screen and (max-width: 550px){ 
+    header nav ul {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 16px;
+    }  
+    
+    #title_tag {
+        position: relative;
+        top: -15px;
+        left: 15px;
+    }
+
+    #blog_item {
+        width: 80%;
+        position:relative; 
+        top: 0; 
+        left: 0;        
+    }
+
+    #PostItem {
+        width: 80%;
+    }
+
+    #DashboardItem {
+        width: 80%;
+        position:relative; 
+        top: 0; 
+        left: 0;        
+    }
+
+    #login_item {
+        width: 80%;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    header nav {  
+        width: 80%;
+        position: relative;
+        left: 30px;
+    }
+
+    #posted_data {
+        font-size: 14px;
+        position: absolute; 
+        top: -30px; 
+        left: 5px;
+        color: black; 
+    }
+   
+    header {
+        width: 80%;
+        margin-left: 50px;
+    }
+     
+    #PostCommentTextbox {
+        margin-right: 50x;
+    }
+
+    #txtUsername {
+        width: 95%;
+    }
+
+    #txtPassword {
+        width: 95%;
+    }
+
+    #btnLogin {
+        width: 95%;
+    }
+
+    #display_comment_Item {
+        width: 80%;
+    }
+
+    #add_comment_item {
+        width: 80%;
+    }
+    
+    #display_comment_text {
+        width: 95%;
+    }
+
+    #add_comment_textbox {
+        width: 95%;
+    }  
+    
+    #AddComment {
+        width: 95%;
+    }
+
+    #btnPostCreate {
+        width: 95%;
+    }    
+
+    #btnPostUpdate {
+        width: 95%;
+    }    
+
+    #btnPostDelete {
+        width: 95%;
+    }    
+
+    #PostCommentTextbox {
+        width: 95%;
+    }    
+
+    #txtTitle {
+        width: 95%;
+    }  
+
+    #DashboardTitle {
+        width: 95%;
+    }
+
+    .login_header1{
+        font-size: 14px;
+    }
+
+    .login_header2{
+        font-size: 14px;
     }
 }
-*********************************************************/
+
+@media screen and (max-width: 350px){ 
+    header nav {  
+        width: 50%;
+    }
+
+    #posted_data {
+        font-size: 12px;
+    }
+}
 

@@ -160,6 +160,9 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
 router.get('/blog/:id', async (req, res) => {
   try
   {
+    let userId = req.session.user_id;
+    let blogId = req.params.id;
+
     if (req.params.id != "0")
     {
         const blogData = await Blog.findByPk(req.params.id, {
@@ -169,17 +172,23 @@ router.get('/blog/:id', async (req, res) => {
         // Get the data for just the one item.
         const blogItem = blogData.get({ plain: true });
 
+       
+
         res.render('blog', {blogItem, loggedIn: req.session.logged_in,
                                       dashboardPage: true,
                                       newPost: false,
-                                      blogPage: true, });        
+                                      blogPage: true,
+                                      userIdValue: userId,
+                                      blogIdValue: blogId, });        
     }
     else
     {
         res.render('blog', { loggedIn: req.session.logged_in,
                          dashboardPage: true,
                          newPost: true,
-                         blogPage: true, });
+                         blogPage: true,
+                         userIdValue: userId,
+                         blogIdValue: blogId,});
     }
   }
   catch (err)
