@@ -65,13 +65,22 @@ router.get('/login', async (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // Route to get, display the dashboard page.
-// This just renders the page.  Not getting the data and passing in a model yet.
+// This route does a findAll based on the user_id value. All post for this user
+// will be displayed on the dashboard page. 
 ////////////////////////////////////////////////////////////////////////////////////////
 router.get('/dashboard',  withAuth, async (req, res) => {
   try
   {
-    res.render('dashboard', { loggedIn: req.session.logged_in,
-                              dashboardPage: true });
+    // Call the findAll method of the Blog model to get all of the rows from the Blog table that contain a match
+    // on the user_id value. Include the User model.
+    const blogData = await Blog.findAll({
+      include: [{ model: User }], where: { user_id: req.session.user_id }
+    });
+
+    const blogs = blogData.map((project) => project.get({ plain: true }));
+
+    res.render('dashboard', {blogs, loggedIn: req.session.logged_in,
+                             dashboardPage: true });
   }
   catch (err)
   {
@@ -162,13 +171,15 @@ router.get('/blog/:id', async (req, res) => {
 
         res.render('blog', {blogItem, loggedIn: req.session.logged_in,
                                       dashboardPage: true,
-                                      newPost: false, });        
+                                      newPost: false,
+                                      blogPage: true, });        
     }
     else
     {
         res.render('blog', { loggedIn: req.session.logged_in,
                          dashboardPage: true,
-                         newPost: true, });
+                         newPost: true,
+                         blogPage: true, });
     }
   }
   catch (err)

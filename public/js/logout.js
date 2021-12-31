@@ -2,50 +2,25 @@ let LogoutLink = null;
 LogoutLink = document.getElementById("logout");
 LogoutLink.addEventListener("click", PerformLogout);
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Function: PerformLogout - This function is called when the logout link is clicked.
+// It calls the command setTimeout and after half a second it calls the functionDoDocumentReplace
+// which will bring up the home page.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 function PerformLogout()
 {
   setTimeout(() => { DoDocumentReplace("/"); }, 500);    
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Function: DoDocumentReplace - This function will call document.location.replace using the URL
+// value passed in.  It will replace the current page with the page of the URL passed in. For this
+// case it will be the home page.  I had to do this to delay the home page from being displayed because
+// the session variables are not initialized yet, and have an undefined value so the home page
+// does not display the login and logout items correctly until the session variable have be initialized. 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 function DoDocumentReplace(szURL)
 {
   document.location.replace(szURL);
 }
-
-
-// OLD CODE BELOW:
-
-
-/*************************************************************************
-const logout = async () => {
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  if (response.ok) {
-    document.location.replace('/');
-  } else {
-    alert('Failed to log out.');
-  }
-};
-
-document.querySelector('#logout').addEventListener('click', logout);
-
-// Code cut and pasted from activity below:
-
-const logout = async () => {
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  if (response.ok) {
-    document.location.replace('/');
-  } else {
-    alert('Failed to log out.');
-  }
-};
-
-document.querySelector('#logout').addEventListener('click', logout);
-***********************************************************************************/

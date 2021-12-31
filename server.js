@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 3001;
 // Create the express handlebar.
 const hbs = exphbs.create({});
 
-/*******************************************************************************************************
+
 // Sets up session and connect to our Sequelize db
 const sess = {
   secret: 'Super secret secret',
@@ -36,7 +36,8 @@ const sess = {
   // to our session options.
   cookie: {
     // maxAge sets the maximum age for the session to be active. Listed in milliseconds.
-    maxAge: 3600,
+    // 60,000 milliseconds = 1 minute.  10 minutes = 600000. 
+    maxAge: 600000,
     // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP.
     httpOnly: true,
     // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to true, 
@@ -53,8 +54,9 @@ const sess = {
     db: sequelize,
   }),
 };
-**************************************************************************************************************/
 
+
+/**********************************************************************
 // Configure and link a session object with the sequelize store
 const sess = {
   secret: 'Super secret secret',
@@ -65,6 +67,8 @@ const sess = {
     db: sequelize
   })
 };
+*************************************************************************/
+
 
 // Add the session to the express application server.
 app.use(session(sess));

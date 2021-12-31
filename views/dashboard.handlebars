@@ -1,9 +1,12 @@
-<div id="DashboardItem">
-    <div id="DashboardTitle">
-        <a id="DashboardLink" href="/blog/1"><h3 id="title_data">Why MVC is so important</h3></a>
-        <p id="posted_data">5/8/2020</p>
+{{#each blogs as |blog|}} 
+
+    <div id="DashboardItem">
+        <div id="DashboardTitle">
+            <a id="DashboardLink" href="/blog/{{blog.id}}"><h3 id="title_data">{{blog.title}}</h3></a>
+            <p id="posted_data">{{blog.dateposted}}</p>
+        </div>
     </div>
-</div>
+{{/each}} 
 
 <div class="NewPostDiv"> 
     <button class="NewPostButton";  type="button" id="btnNewPost">+ New Post</button>     
