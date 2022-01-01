@@ -131,6 +131,8 @@ function PerformOperation()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformLogIn(szUsername, szPassword)
 {
+  try
+  {
     // Do Post call to test if user can log in.
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -142,20 +144,21 @@ async function PerformLogIn(szUsername, szPassword)
     if (response.ok) 
     {
       setTimeout(() => { DoDocumentReplace("/"); }, 1000);      
-    } 
-    else 
-    {
-      if (response.status == 400)
-      {
-          // Get the message sent from the server.
-          data = await response.json();
-          alert("The Login Operation Failed.\r\n" + data.message);
-      }
-      else
-      {
-          alert ('Failed to log in.');  
-      }      
     }
+  }
+  catch (err)
+  { 
+    if (response.status == 400)
+    {
+        // Get the message sent from the server.
+        data = await response.json();
+        alert("The Login Operation Failed.\r\n" + data.message);
+    }
+    else
+    {
+        alert ('Failed to log in.');  
+    }      
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -164,6 +167,8 @@ async function PerformLogIn(szUsername, szPassword)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformSignUp(szUsername, szPassword)
 {
+  try
+  {
     let data = null;
 
     const response = await fetch('/api/users/', {
@@ -176,19 +181,20 @@ async function PerformSignUp(szUsername, szPassword)
     {
       setTimeout(() => { DoDocumentReplace("/"); }, 1000);      
     } 
-    else 
+  }
+  catch (err)
+  {
+    if (response.status == 400)
     {
-      if (response.status == 400)
-      {
-          // Get the id of the new comment record created.
-          data = await response.json();
-          alert("The Sign Up Operation Failed.\r\n" + data.message);
-      }
-      else
-      {
-          alert("The Sign Up Operation Failed.");  
-      }
+      // Get the id of the new comment record created.
+      data = await response.json();
+      alert("The Sign Up Operation Failed.\r\n" + data.message);
     }
+    else
+    {
+      alert("The Sign Up Operation Failed.");  
+    }
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -31,6 +31,8 @@ if (btnPostDelete != null)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformCreate()
 {
+  try
+  {
     let user_id = 0;
     let title = "";
     let content = "";
@@ -83,12 +85,13 @@ async function PerformCreate()
         // This command will cause the get route to be called for the dashboard.
         document.location.replace('/dashboard');      
     }
-    else
-    {
-          // Display the message sent from the server. 
-          data = await response.json();
-          alert(data.message);
-    }
+  }
+  catch (err)
+  {
+    // Display the message sent from the server. 
+    data = await response.json();
+    alert(data.message);
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,70 +101,73 @@ async function PerformCreate()
 // the update operation was successful.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformUpdate()
-{ 
-  let user_id = 0;
-  let title = "";
-  let content = "";
-  let userid = null;
-  let PostCommentTextbox = null;
-  let txtTitle = null;
-  let blog_id = 0;
-  let blogid = null;
-  let szResult = "";
+{
+  try
+  { 
+    let user_id = 0;
+    let title = "";
+    let content = "";
+    let userid = null;
+    let PostCommentTextbox = null;
+    let txtTitle = null;
+    let blog_id = 0;
+    let blogid = null;
+    let szResult = "";
 
-  // Get the elements by their Id values.
-  userid = document.getElementById("userid");
-  blogid = document.getElementById("blogid");
-  PostCommentTextbox = document.getElementById("PostCommentTextbox");
-  txtTitle = document.getElementById("txtTitle");
+    // Get the elements by their Id values.
+    userid = document.getElementById("userid");
+    blogid = document.getElementById("blogid");
+    PostCommentTextbox = document.getElementById("PostCommentTextbox");
+    txtTitle = document.getElementById("txtTitle");
 
-  // Get the user id value from the hidden field.
-  user_id = userid.value;
+    // Get the user id value from the hidden field.
+    user_id = userid.value;
 
-  // Get the blog id value from the hidden field.
-  blog_id = blogid.value;
+    // Get the blog id value from the hidden field.
+    blog_id = blogid.value;
 
-  // Get the content text entered by the user.
-  content = PostCommentTextbox.value.trim();
+    // Get the content text entered by the user.
+    content = PostCommentTextbox.value.trim();
 
-  // Get the title text entered by the user.
-  title = txtTitle.value.trim();
+    // Get the title text entered by the user.
+    title = txtTitle.value.trim();
 
-  // If the user did not enter a title, tell them about it and exit.
-  if (title.length == 0)
-  {
-    alert("The update operation cannot be performed.\r\nYou must enter a title.");
-    return;
-  }
+    // If the user did not enter a title, tell them about it and exit.
+    if (title.length == 0)
+    {
+      alert("The update operation cannot be performed.\r\nYou must enter a title.");
+      return;
+    }
 
-  // If the user did not enter content, tell them about it and exit.
-  if (content.length == 0)
-  {
-    alert("The update operation cannot be performed.\r\nYou must enter content.");
-    return;
-  }
+    // If the user did not enter content, tell them about it and exit.
+    if (content.length == 0)
+    {
+      alert("The update operation cannot be performed.\r\nYou must enter content.");
+      return;
+    }
 
-  // Have to replace all '\n' characters with the '<br>' character.
-  szResult = content.replaceAll('\n', '<br>');
-  content = szResult;
+    // Have to replace all '\n' characters with the '<br>' character.
+    szResult = content.replaceAll('\n', '<br>');
+    content = szResult;
 
-  const response = await fetch('/api/blogs/' + blog_id.toString(), {
-    method: 'PUT',
-    body: JSON.stringify({ user_id, title, content  }),
-    headers: { 'Content-Type': 'application/json' },
-  });   
+    const response = await fetch('/api/blogs/' + blog_id.toString(), {
+      method: 'PUT',
+      body: JSON.stringify({ user_id, title, content  }),
+      headers: { 'Content-Type': 'application/json' },
+    });   
 
-  if (response.status == 200) 
-  {
+    if (response.status == 200) 
+    {
         // Display the message sent from the server. 
         data = await response.json(); 
         alert(data.message);   
+    }
   }
-  else
+  catch (err)
   {
-        // Display the message sent from the server. 
-        data = await response.json();
-        alert(data.message);
+    // Display the message sent from the server. 
+    data = await response.json();
+    alert(data.message);
   }
 }
 
@@ -175,31 +181,34 @@ async function PerformUpdate()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformDelete()
 {
-  let blog_id = 0;
-  let blogid = null;
-
-  // Get the blog id element for the document.
-  blogid = document.getElementById("blogid"); 
-  
-  // Get the blog id value from the hidden field.
-  blog_id = blogid.value; 
-  
-  const response = await fetch('/api/blogs/' + blog_id.toString(), 
+  try
   {
-    method: 'DELETE',
-  });     
+    let blog_id = 0;
+    let blogid = null;
 
-  if (response.status == 200) 
-  {
+    // Get the blog id element for the document.
+    blogid = document.getElementById("blogid"); 
+  
+    // Get the blog id value from the hidden field.
+    blog_id = blogid.value; 
+  
+    const response = await fetch('/api/blogs/' + blog_id.toString(), 
+    {
+      method: 'DELETE',
+    });     
+
+    if (response.status == 200) 
+    {
       // This command will cause the get route to be called for the dashboard.
       // Had to use setTimeout so wait a second before the dashboard page is displayed.
       setTimeout(() => { DoDocumentReplace("/dashboard"); }, 1000);      
+    }
   }
-  else
+  catch (err)
   {
-      // Display the message sent from the server. 
-      data = await response.json();
-      alert(data.message);
+    // Display the message sent from the server. 
+    data = await response.json();
+    alert(data.message);
   }  
 }
 

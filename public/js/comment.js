@@ -17,66 +17,73 @@ if(btnAddComment != null)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function AddComment()
 {
-  // Setup variables to default values.
-  let blogid = null;
-  let userid = null;
-  let blogid_value = "0";
-  let userid_value = "0";
-  let add_comment_textbox = null;
-  let comment = "";
-  let data = null;
-  let username = null;
-  let username_value = "";
-  let szResult = "";
+  try
+  {
+    // Setup variables to default values.
+    let blogid = null;
+    let userid = null;
+    let blogid_value = "0";
+    let userid_value = "0";
+    let add_comment_textbox = null;
+    let comment = "";
+    let data = null;
+    let username = null;
+    let username_value = "";
+    let szResult = "";
 
-  // Get the elements from hidden controls.
-  blogid = document.getElementById("blogid");
-  userid = document.getElementById("userid");
-  username = document.getElementById("username");
+    // Get the elements from hidden controls.
+    blogid = document.getElementById("blogid");
+    userid = document.getElementById("userid");
+    username = document.getElementById("username");
 
-  // Get the comment textbox control.
-  add_comment_textbox = document.getElementById("add_comment_textbox");
+    // Get the comment textbox control.
+    add_comment_textbox = document.getElementById("add_comment_textbox");
  
-  // Get the blog id, user id and username values.
-  blogid_value = blogid.value;
-  userid_value = userid.value;
-  username_value = username.value;
+    // Get the blog id, user id and username values.
+    blogid_value = blogid.value;
+    userid_value = userid.value;
+    username_value = username.value;
 
-  // Get the comment text entered by the user.
-  comment = add_comment_textbox.value.trim();
+    // Get the comment text entered by the user.
+    comment = add_comment_textbox.value.trim();
 
-  // if we have text perform a POST operation and send the comment to the server.
-  if (comment)
-  {
-    // Replace all '\n' characters in the comment text with '<br>' characters.
-    szResult = comment.replaceAll('\n', '<br>');
-
-    // Append the username and current date to the comment.
-    comment = szResult + '<br><br>' + "--" + username_value + ", " + new Date().toLocaleDateString(); 
-
-     const response = await fetch('/api/comments/', {
-      method: 'POST',
-      body: JSON.stringify({ comment, blogid_value, userid_value }),
-      headers: { 'Content-Type': 'application/json' },
-    });   
-
-    if (response.status !== 200) 
+    // if we have text perform a POST operation and send the comment to the server.
+    if (comment)
     {
-      alert("The comment was not save.  The Submit operation failed.");
-      return;
+      // Replace all '\n' characters in the comment text with '<br>' characters.
+      szResult = comment.replaceAll('\n', '<br>');
+
+      // Append the username and current date to the comment.
+      comment = szResult + '<br><br>' + "--" + username_value + ", " + new Date().toLocaleDateString(); 
+
+      const response = await fetch('/api/comments/', {
+        method: 'POST',
+        body: JSON.stringify({ comment, blogid_value, userid_value }),
+        headers: { 'Content-Type': 'application/json' },
+      });   
+
+      if (response.status !== 200) 
+      {
+        alert("The comment was not save.  The Submit operation failed.");
+        return;
+      }
+
+      // Get the id of the new comment record created.
+      data = await response.json();
+
+      // This command will cause the get route to be called for a comment.
+      // Pass in the id of the comment record created and a blog id value of zero.
+      document.location.replace('/comment/' + data[0].id.toString() + "/0" );
     }
-
-    // Get the id of the new comment record created.
-    data = await response.json();
-
-    // This command will cause the get route to be called for a comment.
-    // Pass in the id of the comment record created and a blog id value of zero.
-    document.location.replace('/comment/' + data[0].id.toString() + "/0" );
+    // else - tell the user the comment was not entered.
+    else
+    {
+      alert("The comment control is blank. You must enter a comment.");
+    }
   }
-  // else - tell the user the comment was not entered.
-  else
+  catch (err)
   {
-    alert("The comment control is blank. You must enter a comment.");
+    alert("The add comment operation failed.");    
   }
 }
 
