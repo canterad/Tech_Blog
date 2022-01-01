@@ -35,14 +35,18 @@
 
    <div id="display_comment_item">
         <div id="display_comment_title"></div>  
-        <p id="display_comment_text" class="comment_title">{{blogItem.content}}</p>
+        <p id="display_comment_text" class="comment_title">{{{blogItem.content}}}</p>
+
     </div>    
 
 {{/if}} 
 
 <!-- Save the blog id and user id values so have them on the client side. -->
 <input type="hidden" id="blogid" value="{{blogItem.id}}">
-<input type="hidden" id="userid" value="{{blogItem.user.id}}">        
+<input type="hidden" id="userid" value="{{blogItem.user.id}}">     
+<input type="hidden" id="username" value="{{UsernameItem}}"> 
+
+         
 
  
 

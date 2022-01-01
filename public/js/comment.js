@@ -16,22 +16,33 @@ async function AddComment()
   let add_comment_textbox = null;
   let comment = "";
   let data = null;
+  let username = null;
+  let username_value = "";
+  let szResult = "";
 
   // Get the elements.
   blogid = document.getElementById("blogid");
   userid = document.getElementById("userid");
+  username = document.getElementById("username");
   add_comment_textbox = document.getElementById("add_comment_textbox");
-
+ 
   // Get the blog id and user id values.
   blogid_value = blogid.value;
   userid_value = userid.value;
+  username_value = username.value;
 
   // Get the comment text entered by the user.
   comment = add_comment_textbox.value.trim();
-    
+
   // if we have text perform a POST operation and send the comment to the server.
   if (comment)
   {
+    // Replace all '\n' characters in the comment text with '<br>' characters.
+    szResult = comment.replaceAll('\n', '<br>');
+
+    // Append the username and current date to the comment.
+    comment = szResult + '<br><br>' + "--" + username_value + ", " + new Date().toLocaleDateString(); 
+
      const response = await fetch('/api/comments/', {
       method: 'POST',
       body: JSON.stringify({ comment, blogid_value, userid_value }),

@@ -101,13 +101,14 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
   {
     let bAddComment = false;
     let blogData = null;
+    let UsernameItem = req.session.user_name;
 
     // If the id parameter value is zero then use the blog id and get the blog record and do not
     // include the Comment model.
     if (req.params.id == "0")
     {
-      // Set the boolean value to true because we are adding a new comment.
-      bAddComment = true;
+        // Set the boolean value to true because we are adding a new comment.
+        bAddComment = true;
 
         blogData = await Blog.findByPk(req.params.blog_id, {
         include: [{ model: User }],
@@ -142,7 +143,7 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
 
     // Render the comment view pass in the blogItem model and other values that the page tests.
     res.render('comment', {blogItem, loggedIn: req.session.logged_in,
-      dashboardPage: false, commentPage: true, addComment: bAddComment,});
+      dashboardPage: false, commentPage: true, addComment: bAddComment, UsernameItem:UsernameItem, });
   } 
   catch (err) 
   {
