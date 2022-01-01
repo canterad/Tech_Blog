@@ -25,13 +25,13 @@ User2: Username: canterad, Password: password
 <br><br>
 
 ### The Following HTML Routes Are Called For Displaying Web Pages:
-"Home Page" - HTML GET - Get all Posted Blogs" - "/"<br>
-"Dashboard" - HTML GET -Get Blogs for current user" - "/dashboard" - Code uses session variable "user_id" to get blogs for current user.<br>
+"Home Page" - HTML GET - Get all Posted Blogs" - "/"<br><br>
+"Dashboard" - HTML GET -Get Blogs for current user" - "/dashboard" - Code uses session variable "user_id" to get blogs for current user.<br><br>
 "Login - SignUp" - HTML GET - Display Login Page - "/login"<br>
 "Logout" - HTML GET - Perform logout operation - "/logout"<br>
 "New Post" - HTML GET - Display New Post Page - "/blog/0" - Pass in zero blog id value for new post.<br>
-"Edit Delete Post" - HTML GET - Display Edit Post Page - "/blog/id" - Pass in blog id value of current blog.<br>
-"Add New Comment Page" - HTML GET - Display New Comment Page - "/comment/:id/:blog_id" - Pass in comment id = 0 and blog id.<br>
+"Edit Delete Post" - HTML GET - Display Edit Post Page - "/blog/id" - Pass in blog id value of current blog.<br><br>
+"Add New Comment Page" - HTML GET - Display New Comment Page - "/comment/:id/:blog_id" - Pass in comment id = 0 and blog id.<br><br>
 "Display Comment Page" - HTML GET - Display Current Comment Page - "/comment/:id/:blog_id" - Pass in comment id and blog id = 0.<br><br> 
 
 ### The Following HTML Routes Are Called For Performing Operations:
@@ -63,7 +63,7 @@ This occurs when you have added a new comment to a post:<br>
 <br>
 SOLUTION: I had to use the JavaScript command "replaceAll" and replace all '\n' characters with the paragraph "< br >" characters because we are going from text in the text area element to text in a paragraph element.  I also had to use triple brackets {{{ }}} so Handlebars does not HTML-escape the value.
  <p id="blog_content">{{{blog.content}}}</p>
-<br>
+
 
 ### Passing Data To The Client:
 I found that when I needed to perform operations on the Client Side I needed data that was not displayed in 
