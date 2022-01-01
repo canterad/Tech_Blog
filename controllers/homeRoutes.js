@@ -1,7 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+// This file contains all of the home route methods.
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 const router = require('express').Router();
 const { User, Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // This is the get call to get all of the blogs for the homepage.
@@ -17,8 +20,7 @@ router.get('/', async (req, res) => {
 
     const blogs = blogData.map((project) => project.get({ plain: true }));
 
-    // Need to set this up to get value from session variable.
-    //res.render('homepage', {blogs, loggedIn: true, });
+    // Passing in the session variable logged_in to the view.
     res.render('homepage', {blogs, loggedIn: req.session.logged_in,
                                    dashboardPage: false});
   
@@ -47,7 +49,7 @@ router.get('/logout', (req, res) => {
 });
 
 ////////////////////////////////////////////////////////////////////////////
-// Route to get, display the login page.
+// Route to display the login page.
 // This is rendering the login page, no data model is used.
 ///////////////////////////////////////////////////////////////////////////
 router.get('/login', async (req, res) => {
@@ -130,9 +132,9 @@ router.get('/comment/:id/:blog_id', async (req, res) => {
       });
     }
 
-    // If the Blog id not found tell the user.
+    // If the Comment data was not found tell the user.
     if (!blogData) {
-      res.status(404).json({ message: 'No blog found with that id!' });
+      res.status(404).json({ message: 'No Comment Data found!' });
       return;
     }
 

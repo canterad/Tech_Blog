@@ -25,7 +25,9 @@ if (btnPostDelete != null)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Function: PerformCreate - This function 
+// Function: PerformCreate - This function will perform the create operation for a Blog Post.  It calls a POST
+// route for a blog post: /api/blogs/.  After the create operation is completed it executes the command
+// document.location.replace to bring up the Dashboard page.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformCreate()
 {
@@ -36,6 +38,7 @@ async function PerformCreate()
     let PostCommentTextbox = null;
     let txtTitle = null;
     let data = null;
+    let szResult = "";
 
     // Get the elements by their Id values.
     userid = document.getElementById("userid");
@@ -65,6 +68,10 @@ async function PerformCreate()
       return;
     }
 
+    // Have to replace all '\n' characters with the '<br>' character.
+    szResult = content.replaceAll('\n', '<br>');
+    content = szResult;
+
     const response = await fetch('/api/blogs/', {
       method: 'POST',
       body: JSON.stringify({ user_id, title, content  }),
@@ -85,7 +92,10 @@ async function PerformCreate()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Function: PerformUpdate:
+// Function: PerformUpdate: This function performs the Update operation for the Blog Post.
+// It does a PUT operation using the following route: /api/blogs/
+// After the update operation completes it displays a message to the user telling them that
+// the update operation was successful.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformUpdate()
 { 
@@ -97,6 +107,7 @@ async function PerformUpdate()
   let txtTitle = null;
   let blog_id = 0;
   let blogid = null;
+  let szResult = "";
 
   // Get the elements by their Id values.
   userid = document.getElementById("userid");
@@ -130,6 +141,10 @@ async function PerformUpdate()
     return;
   }
 
+  // Have to replace all '\n' characters with the '<br>' character.
+  szResult = content.replaceAll('\n', '<br>');
+  content = szResult;
+
   const response = await fetch('/api/blogs/' + blog_id.toString(), {
     method: 'PUT',
     body: JSON.stringify({ user_id, title, content  }),
@@ -151,7 +166,12 @@ async function PerformUpdate()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Function: PerformDelete:
+// Function: PerformDelete: This operation performs the delete operation for a blog post.
+// It performs a DELETE operation passing in the route: /api/blogs/.
+// After the delete operation completes it excutes the command document.location.replace
+// to display the Dashboard page.  I had to use the setTimeout command for a one second delay,
+// because the delete operation was not completing before the Dashboard page was displayed and
+// the Blog Post that was deleted was still being displayed.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformDelete()
 {
@@ -172,8 +192,8 @@ async function PerformDelete()
   if (response.status == 200) 
   {
       // This command will cause the get route to be called for the dashboard.
-      // Had to use setTimeout so wait half a second before the dashboard page is displayed.
-      setTimeout(() => { DoDocumentReplace("/dashboard"); }, 500);      
+      // Had to use setTimeout so wait a second before the dashboard page is displayed.
+      setTimeout(() => { DoDocumentReplace("/dashboard"); }, 1000);      
   }
   else
   {

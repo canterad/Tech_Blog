@@ -1,11 +1,20 @@
+// Create variables for the Add Comment operation.
 let btnAddComment = null;
- 
+
+// If we found the AddComment element in the document then setup the Event Listener.
 btnAddComment = document.getElementById("AddComment");
 if(btnAddComment != null)
 {
   btnAddComment.addEventListener("click", AddComment);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Function: AddComment - This function performs a POST operation to create a new comment.
+// It uses the following route: '/api/comments/'
+// After the POST operation completes it call the command document.location.replace with the
+// following url: /comment/id passing in the id of the new comment just created so the comment
+// web page will get updated.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function AddComment()
 {
   // Setup variables to default values.
@@ -20,13 +29,15 @@ async function AddComment()
   let username_value = "";
   let szResult = "";
 
-  // Get the elements.
+  // Get the elements from hidden controls.
   blogid = document.getElementById("blogid");
   userid = document.getElementById("userid");
   username = document.getElementById("username");
+
+  // Get the comment textbox control.
   add_comment_textbox = document.getElementById("add_comment_textbox");
  
-  // Get the blog id and user id values.
+  // Get the blog id, user id and username values.
   blogid_value = blogid.value;
   userid_value = userid.value;
   username_value = username.value;

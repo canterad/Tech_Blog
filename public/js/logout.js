@@ -7,12 +7,12 @@ if (LogoutLink != null)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: PerformLogout - This function is called when the logout link is clicked.
-// It calls the command setTimeout and after half a second it calls the functionDoDocumentReplace
+// It calls the command setTimeout and after a second it calls the functionDoDocumentReplace
 // which will bring up the home page.
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 function PerformLogout()
 {
-  setTimeout(() => { DoDocumentReplace("/"); }, 500);    
+  setTimeout(() => { DoDocumentReplace("/"); }, 1000);    
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////

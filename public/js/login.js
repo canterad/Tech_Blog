@@ -138,10 +138,10 @@ async function PerformLogIn(szUsername, szPassword)
       headers: { 'Content-Type': 'application/json' },
     });
 
-    // User was able to login.  Wait 1/2 a second before doing the location replace command.
+    // User was able to login.  Wait 1 second before doing the location replace command.
     if (response.ok) 
     {
-      setTimeout(() => { DoDocumentReplace("/"); }, 500);      
+      setTimeout(() => { DoDocumentReplace("/"); }, 1000);      
     } 
     else 
     {
@@ -160,7 +160,7 @@ async function PerformLogIn(szUsername, szPassword)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: PerformSignUp - This function does a POST operation to create a new user.
-// I am using a setTimeout command to wait for 1/2 a second before doing the location replace command.
+// I am using a setTimeout command to wait for 1 second before doing the location replace command.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformSignUp(szUsername, szPassword)
 {
@@ -174,7 +174,7 @@ async function PerformSignUp(szUsername, szPassword)
 
     if (response.ok) 
     {
-      setTimeout(() => { DoDocumentReplace("/"); }, 500);      
+      setTimeout(() => { DoDocumentReplace("/"); }, 1000);      
     } 
     else 
     {
