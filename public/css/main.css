@@ -34,7 +34,6 @@ header nav ul li a {
 header nav {   
     margin-top: 20px;
     margin-left: 25px;
-    /* float: left; */
     font-size: 20px; 
     width: 95%;
     background-color: black;   
@@ -132,14 +131,14 @@ header nav ul li {
     width: 95%;
     margin-left: 45px;
     margin-top: 15px;
-    height: 225px;
+    min-height: 225px;
 }
 
 /* Class for the add comment title element: Set the background and text color. */
 #add_comment_title {
     background-color: black;
     color: white;
-    height: 40px;
+    min-height: 40px;
 }
 
 /* Class for the comment text: Position the element, adjust the margins. */
@@ -186,7 +185,7 @@ header nav ul li {
 #display_comment_title {
     background-color: black;
     color: white;
-    height: 40px;
+    min-height: 40px;
 }
 
 /********************************************************************************************************/
@@ -198,7 +197,7 @@ header nav ul li {
     border: 5px solid black;
     width: 95%;
     margin-left: 45px;
-    height: 325px;
+    min-height: 325px;
     margin-top: 15px;
 }
 
@@ -326,7 +325,7 @@ header nav ul li {
     border: 5px solid black;
     width: 95%;
     margin-left: 45px;
-    height: 365px;  
+    min-height: 365px;  
     margin-top: 20px;  
 }
 
