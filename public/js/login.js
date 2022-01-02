@@ -145,19 +145,20 @@ async function PerformLogIn(szUsername, szPassword)
     {
       document.location.replace("/");
     }
+    else if (response.status == 400)
+    {
+      // Get the message sent from the server.
+      data = await response.json();
+      alert("The Login Operation Failed.\r\n" + data.message);
+    }    
+    else if (response.status == 500)
+    {
+      alert ("The Log In Operation Failed."); 
+    }  
   }
   catch (err)
   { 
-    if (response.status == 400)
-    {
-        // Get the message sent from the server.
-        data = await response.json();
-        alert("The Login Operation Failed.\r\n" + data.message);
-    }
-    else
-    {
-        alert ('Failed to log in.');  
-    }      
+    alert ("The Log In Operation Failed.");  
   }
 }
 
@@ -181,19 +182,20 @@ async function PerformSignUp(szUsername, szPassword)
     {
       document.location.replace("/");
     } 
-  }
-  catch (err)
-  {
-    if (response.status == 400)
+    else if (response.status == 400)
     {
-      // Get the id of the new comment record created.
+      // Get the data to display the message.
       data = await response.json();
       alert("The Sign Up Operation Failed.\r\n" + data.message);
     }
-    else
+    else if (response.status == 500)
     {
-      alert("The Sign Up Operation Failed.");  
+      alert ("The Sign Up Operation Failed.");       
     }
+  }
+  catch (err)
+  {
+    alert("The Sign Up Operation Failed.");  
   }
 }
 

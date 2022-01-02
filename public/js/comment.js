@@ -85,7 +85,7 @@ async function AddComment()
   }
   catch (err)
   {
-    alert("The add comment operation failed.");    
+    alert("The Add Comment Operation Failed.");    
   }
 }
 

@@ -84,15 +84,19 @@ async function PerformCreate()
 
     if (response.status == 200) 
     {
-        // This command will cause the get route to be called for the dashboard.
-        document.location.replace('/dashboard');      
+      // This command will cause the get route to be called for the dashboard.
+      document.location.replace('/dashboard');      
+    }
+    else
+    {
+      // Display the message sent from the server.
+      data = await response.json();
+      alert(data.message);      
     }
   }
   catch (err)
   {
-    // Display the message sent from the server. 
-    data = await response.json();
-    alert(data.message);
+    alert("The Blog Post Create Operation Failed.");
   }
 }
 
@@ -166,12 +170,15 @@ async function PerformUpdate()
         data = await response.json(); 
         alert(data.message);   
     }
+    else
+    {
+      data = await response.json();
+      alert(data.message);
+    }
   }
   catch (err)
   {
-    // Display the message sent from the server. 
-    data = await response.json();
-    alert(data.message);
+    alert("The Blog Post Update Operation Failed.");
   }
 }
 
@@ -204,12 +211,16 @@ async function PerformDelete()
       // This command will cause the get route to be called for the dashboard.
       document.location.replace("/dashboard");
     }
+    else
+    {
+      // Display the message sent from the server. 
+      data = await response.json();
+      alert(data.message);      
+    }
   }
   catch (err)
   {
-    // Display the message sent from the server. 
-    data = await response.json();
-    alert(data.message);
+    alert("The Blog Post Delete Operation Failed.");
   }  
 }
 
