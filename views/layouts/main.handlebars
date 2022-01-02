@@ -18,21 +18,21 @@
             <!-- Unordered List element, contains link items. -->
             <ul>
                 <li>
-                    <a href="/">Home</a>
+                    <a href="/homeRoutes/">Home</a>
                 </li>
                 <li>
-                    <a href="/dashboard">Dashboard</a>
+                    <a href="/homeRoutes/dashboard">Dashboard</a>
                 </li>
 
                 <!-- if logged in then display logout link. -->
                 {{#if loggedIn}}
                     <li>
-                        <a id="logout" href="/logout">Logout</a>
+                        <a id="logout" href="/homeRoutes/logout">Logout</a>
                     </li>    
                 {{else}}
                 <!-- Otherwise, show a link to login -->
                     <li>
-                        <a href="/login">Login</a>
+                        <a href="/homeRoutes/login">Login</a>
                     </li>    
                 {{/if}}
             </ul>            

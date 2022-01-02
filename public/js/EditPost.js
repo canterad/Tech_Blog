@@ -83,7 +83,7 @@ async function PerformCreate()
     if (response.status == 200) 
     {
         // This command will cause the get route to be called for the dashboard.
-        document.location.replace('/dashboard');      
+        document.location.replace('/homeRoutes/dashboard');      
     }
   }
   catch (err)
@@ -201,7 +201,7 @@ async function PerformDelete()
     {
       // This command will cause the get route to be called for the dashboard.
       // Had to use setTimeout so wait a second before the dashboard page is displayed.
-      setTimeout(() => { DoDocumentReplace("/dashboard"); }, 1000);      
+      setTimeout(() => { DoDocumentReplace("/homeRoutes/dashboard"); }, 1000);      
     }
   }
   catch (err)

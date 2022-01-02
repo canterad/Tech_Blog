@@ -16,6 +16,6 @@ function GoToNewPost()
 {
     // This command will cause the get route to be called for a blog.
     // Pass in the id value of zero, so the Create New Post blog page is displayed..
-    document.location.replace('/blog/0');    
+    document.location.replace('/homeRoutes/blog/0');    
 }
 

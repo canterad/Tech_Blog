@@ -143,7 +143,7 @@ async function PerformLogIn(szUsername, szPassword)
     // User was able to login.  Wait 1 second before doing the location replace command.
     if (response.ok) 
     {
-      setTimeout(() => { DoDocumentReplace("/"); }, 1000);      
+      setTimeout(() => { DoDocumentReplace("/homeRoutes/"); }, 1000);      
     }
   }
   catch (err)
@@ -179,7 +179,7 @@ async function PerformSignUp(szUsername, szPassword)
 
     if (response.ok) 
     {
-      setTimeout(() => { DoDocumentReplace("/"); }, 1000);      
+      setTimeout(() => { DoDocumentReplace("/homeRoutes/"); }, 1000);      
     } 
   }
   catch (err)
