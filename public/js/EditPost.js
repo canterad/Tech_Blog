@@ -72,8 +72,8 @@ async function PerformCreate()
 
     // Have to replace all '\n' characters with the '<br>' character.
     // ReplaceAll does not work on Heroku.
-    //szResult = content.replaceAll('\n', '<br>');
-    szResult = content.replace(/\n/g, '<br>');
+    szResult = content.replaceAll('\n', '<br>');
+    //szResult = content.replace(/\n/g, '<br>');
     content = szResult;
 
     const response = await fetch('/api/blogs/', {
@@ -150,8 +150,8 @@ async function PerformUpdate()
 
     // Have to replace all '\n' characters with the '<br>' character.
     // ReplaceAll does not work on Heroku.
-    //szResult = content.replaceAll('\n', '<br>');
-    szResult = content.replace(/\n/g, '<br>');
+    szResult = content.replaceAll('\n', '<br>');
+    //szResult = content.replace(/\n/g, '<br>');
     content = szResult;
 
     const response = await fetch('/api/blogs/' + blog_id.toString(), {

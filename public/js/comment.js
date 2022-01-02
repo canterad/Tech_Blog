@@ -52,8 +52,8 @@ async function AddComment()
     {
       // Replace all '\n' characters in the comment text with '<br>' characters.
       // replaceAll does not work on Heroku.
-      //szResult = comment.replaceAll('\n', '<br>');
-      szResult = comment.replace(/\n/g, '<br>');
+      szResult = comment.replaceAll('\n', '<br>');
+      //szResult = comment.replace(/\n/g, '<br>');
 
       // Append the username and current date to the comment.
       comment = szResult + '<br><br>' + "--" + username_value + ", " + new Date().toLocaleDateString(); 
