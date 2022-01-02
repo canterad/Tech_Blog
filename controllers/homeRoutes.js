@@ -193,7 +193,8 @@ router.get('/blog/:id', async (req, res) => {
        // Need to replace the '<br>' characters with '\n' characters.
        // Going from paragraph element to text area element. Added to change file.
        szTemp = blogItem.content;
-       szResult = szTemp.replaceAll('<br>', '\n');
+       //szResult = szTemp.replaceAll('<br>', '\n');
+       szResult = szTemp.replace(/<br>/g, '\n');
        blogItem.content = szResult;
 
         res.render('blog', {blogItem, loggedIn: req.session.logged_in,
