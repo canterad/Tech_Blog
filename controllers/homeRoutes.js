@@ -178,7 +178,7 @@ router.get('/blog/:id', async (req, res) => {
   {
     let userId = req.session.user_id;
     let blogId = req.params.id;
-    //let szResult = "";
+    let szResult = "";
 
     if (req.params.id != "0")
     {
@@ -191,8 +191,8 @@ router.get('/blog/:id', async (req, res) => {
 
        // Need to replace the '<br>' characters with '\n' characters.
        // Going from paragraph element to text area element. Added to change file.
-       //szResult = blogItem.content.replaceAll('<br>', '\n');
-       //blogItem.content = szResult;
+       szResult = blogItem.content.replaceAll('<br>', '\n');
+       blogItem.content = szResult;
 
         res.render('blog', {blogItem, loggedIn: req.session.logged_in,
                                       dashboardPage: true,
