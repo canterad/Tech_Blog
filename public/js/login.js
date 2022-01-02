@@ -143,7 +143,7 @@ async function PerformLogIn(szUsername, szPassword)
     // User was able to login.  Wait 1 second before doing the location replace command.
     if (response.ok) 
     {
-      setTimeout(() => { DoDocumentReplace("/homeRoutes/"); }, 1000);      
+      document.location.replace("/homeRoutes/");
     }
   }
   catch (err)
@@ -179,7 +179,7 @@ async function PerformSignUp(szUsername, szPassword)
 
     if (response.ok) 
     {
-      setTimeout(() => { DoDocumentReplace("/homeRoutes/"); }, 1000);      
+      document.location.replace("/homeRoutes/");
     } 
   }
   catch (err)
@@ -197,10 +197,4 @@ async function PerformSignUp(szUsername, szPassword)
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Function: DoDocumentReplace - This function does a document.location.replace command for the URL passed in.
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function DoDocumentReplace(szURL)
-{
-  document.location.replace(szURL);
-}
+

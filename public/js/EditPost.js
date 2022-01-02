@@ -175,9 +175,7 @@ async function PerformUpdate()
 // Function: PerformDelete: This operation performs the delete operation for a blog post.
 // It performs a DELETE operation passing in the route: /api/blogs/.
 // After the delete operation completes it excutes the command document.location.replace
-// to display the Dashboard page.  I had to use the setTimeout command for a one second delay,
-// because the delete operation was not completing before the Dashboard page was displayed and
-// the Blog Post that was deleted was still being displayed.
+// to display the Dashboard page.  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 async function PerformDelete()
 {
@@ -200,8 +198,7 @@ async function PerformDelete()
     if (response.status == 200) 
     {
       // This command will cause the get route to be called for the dashboard.
-      // Had to use setTimeout so wait a second before the dashboard page is displayed.
-      setTimeout(() => { DoDocumentReplace("/homeRoutes/dashboard"); }, 1000);      
+      document.location.replace("/homeRoutes/dashboard");
     }
   }
   catch (err)
@@ -212,10 +209,3 @@ async function PerformDelete()
   }  
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Function: DoDocumentReplace - This function does a document.location.replace command for the URL passed in.
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function DoDocumentReplace(szURL)
-{
-  document.location.replace(szURL);
-}
