@@ -140,10 +140,10 @@ async function PerformLogIn(szUsername, szPassword)
       headers: { 'Content-Type': 'application/json' },
     });
 
-    // User was able to login.  Wait 1 second before doing the location replace command.
-    if (response.ok) 
+    // User was able to login.  Do the location replace command.
+    if (response.status == 200) 
     {
-      document.location.replace("/homeRoutes/");
+      document.location.replace("/");
     }
   }
   catch (err)
@@ -177,9 +177,9 @@ async function PerformSignUp(szUsername, szPassword)
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) 
+    if (response.status == 200) 
     {
-      document.location.replace("/homeRoutes/");
+      document.location.replace("/");
     } 
   }
   catch (err)

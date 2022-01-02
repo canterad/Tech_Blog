@@ -34,17 +34,30 @@ router.get('/', async (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This is the route for the log out operation.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-router.get('/logout', (req, res) => {
-  if (req.session.logged_in) 
+router.get('/logout', async (req, res) => {
+  try
   {
-    // Remove the session variables
-    req.session.destroy(() => {
-      res.status(204).end();
+    if (req.session.logged_in) 
+    {
+      // Remove the session variables
+      req.session.destroy();
+    }
+
+    // Call the findAll method of the Blog model to get all of the rows from the Blog table. 
+    // Include the User model.
+    const blogData = await Blog.findAll({
+      include: [{ model: User }],
     });
-  } 
-  else 
+
+    const blogs = blogData.map((project) => project.get({ plain: true }));
+
+    // Passing in the session variable logged_in to the view.
+    res.render('homepage', {blogs, loggedIn: false,
+                                   dashboardPage: false});    
+  }
+  catch (err)
   {
-    res.status(404).end();
+    res.status(500).json(err);    
   }
 });
 

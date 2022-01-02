@@ -73,7 +73,7 @@ async function AddComment()
 
       // This command will cause the get route to be called for a comment.
       // Pass in the id of the comment record created and a blog id value of zero.
-      document.location.replace('/homeRoutes/comment/' + data[0].id.toString() + "/0" );
+      document.location.replace('/comment/' + data[0].id.toString() + "/0" );
     }
     // else - tell the user the comment was not entered.
     else

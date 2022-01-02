@@ -18,21 +18,21 @@
             <!-- Unordered List element, contains link items. -->
             <ul>
                 <li>
-                    <a href="/homeRoutes/">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/homeRoutes/dashboard">Dashboard</a>
+                    <a href="/dashboard">Dashboard</a>
                 </li>
 
                 <!-- if logged in then display logout link. -->
                 {{#if loggedIn}}
                     <li>
-                        <a id="logout" href="/homeRoutes/logout">Logout</a>
+                        <a id="logout" href="/logout">Logout</a>
                     </li>    
                 {{else}}
                 <!-- Otherwise, show a link to login -->
                     <li>
-                        <a href="/homeRoutes/login">Login</a>
+                        <a href="/login">Login</a>
                     </li>    
                 {{/if}}
             </ul>            
@@ -70,7 +70,7 @@
     {{/if}}
 
     <!-- Load this JS script file for all the pages -->
-    <script src="/js/logout.js"></script>    
+    <!-- <script src="/js/logout.js"></script> -->    
 
   </body>
 </html>

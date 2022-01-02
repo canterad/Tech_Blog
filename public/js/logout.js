@@ -1,9 +1,11 @@
+/***********************************************************
 let LogoutLink = null;
 LogoutLink = document.getElementById("logout");
 if (LogoutLink != null)
 {
   LogoutLink.addEventListener("click", PerformLogout);
 }
+************************************************************/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function: PerformLogout - This function is called when the logout link is clicked.
@@ -11,7 +13,7 @@ if (LogoutLink != null)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 function PerformLogout()
 {
-  document.location.replace("/homeRoutes/"); 
+  document.location.replace("/"); 
 }
 
 

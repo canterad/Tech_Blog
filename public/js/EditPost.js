@@ -83,7 +83,7 @@ async function PerformCreate()
     if (response.status == 200) 
     {
         // This command will cause the get route to be called for the dashboard.
-        document.location.replace('/homeRoutes/dashboard');      
+        document.location.replace('/dashboard');      
     }
   }
   catch (err)
@@ -198,7 +198,7 @@ async function PerformDelete()
     if (response.status == 200) 
     {
       // This command will cause the get route to be called for the dashboard.
-      document.location.replace("/homeRoutes/dashboard");
+      document.location.replace("/dashboard");
     }
   }
   catch (err)
