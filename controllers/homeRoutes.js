@@ -192,6 +192,7 @@ router.get('/blog/:id', async (req, res) => {
 
        // Need to replace the '<br>' characters with '\n' characters.
        // Going from paragraph element to text area element. Added to change file.
+       // replaceAll does not work here on Heroku, used replace instead.
        szTemp = blogItem.content;
        //szResult = szTemp.replaceAll('<br>', '\n');
        szResult = szTemp.replace(/<br>/g, '\n');
