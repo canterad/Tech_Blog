@@ -178,6 +178,7 @@ router.get('/blog/:id', async (req, res) => {
   {
     let userId = req.session.user_id;
     let blogId = req.params.id;
+    let szResult = "";
 
     if (req.params.id != "0")
     {
@@ -188,7 +189,10 @@ router.get('/blog/:id', async (req, res) => {
         // Get the data for just the one item.
         const blogItem = blogData.get({ plain: true });
 
-       
+       // Need to replace the '<br>' characters with '\n' characters.
+       // Going from paragraph element to text area element.
+       szResult = blogItem.content.replaceAll('<br>', '\n');
+       blogItem.content = szResult;
 
         res.render('blog', {blogItem, loggedIn: req.session.logged_in,
                                       dashboardPage: true,
