@@ -36,8 +36,8 @@ const sess = {
   // to our session options.
   cookie: {
     // maxAge sets the maximum age for the session to be active. Listed in milliseconds.
-    // 60,000 milliseconds = 1 minute.  5 minutes = 300000. 
-    maxAge: 300000,
+    // 60,000 milliseconds = 1 minute.  15 minutes = 900000. 
+    maxAge: 900000,
     // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP.
     httpOnly: true,
     // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to true, 
