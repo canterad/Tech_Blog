@@ -14,8 +14,8 @@ language, Sequelize as the ORM, and the express-session npm package for authenti
 <br><br>
 
 ### maxAge Cookie Setting:
-The maxAge cookie setting is set to 30,000 for five minutes.  If you are login to the site and you
-refresh the page after 5 minutes you will see that you will be logged out.
+The maxAge cookie setting is set to 90,000 for fifteen minutes.  If you are login to the site and you
+refresh the page after 15 minutes you will see that you will be logged out.
 <br><br>
 
 ### Database Seeded Data:
@@ -48,22 +48,17 @@ user_id - This is used to get all of the blogs for the current user on the Dashb
 logged_in - This is used to toggle the login and logout links. Used in withAuth function to test logged in status.<br>user_name - This is used save the current user name so the user name will be added to comments. 
 <br><br> 
 
-### Timing Problems Found When Login, Logout And Deleting A Blog Post Operation Performed:
-I found that when I performed the log in and log out operation the main page got refreshed before the operation completed, so the correct log in status was not displayed correctly.  I also found when I performed the delete blog operation the Dashboard page got refreshed before the operation completed, so the blog that I just deleted was still being displayed.
-<br><br>
-SOLUTION: I was able to solve this problem by using the setTimeout command for one second before I called the document.location.replace command to display the new page.  
-<br> 
-
-### Display Format Problems With Using Textarea Element To Enter Text And Then Displaying Text In A Paragraph Element:
+### Display Format Problems With Using Textarea And Paragraph Elements:
 This occurs when you have added a new blog post:<br>
 <img src="images/PostCommentDisplayed.jpg" height="100">
 <br><br>
 This occurs when you have added a new comment to a post:<br>
 <img src="images/NewCommentAdded.jpg" height="200">
 <br>
-SOLUTION: I had to use the JavaScript command "replaceAll" and replace all '\n' characters with the paragraph "< br >" characters because we are going from text in the text area element to text in a paragraph element.  I also had to use triple brackets {{{ }}} so Handlebars does not HTML-escape the value.
+SOLUTION: I had to use the JavaScript command "replaceAll" and replace all the '\n' characters with the paragraph "< br >" characters when going from text in the text area element to text in a paragraph element.<br><br>
+When I was doing an edit blog operation, going from Paragraph to text area I had to do the replaceAll operation to reset the characters back to '\n' characters.  <br><br>I also had to use triple brackets {{{ }}} so Handlebars does not HTML-escape the value.
  <p id="blog_content">{{{blog.content}}}</p>
-
+<br>
 
 ### Passing Data To The Client:
 I found that when I needed to perform operations on the Client Side I needed data that was not displayed in 
@@ -89,4 +84,5 @@ Git Hub Link To Code For Project:<br>
 https://github.com/canterad/Tech_Blog.git
 <br><br>
 Links to Heroku site:<br>
+https://still-hamlet-61193.herokuapp.com/
 
